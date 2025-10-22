@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{061BA17D-2BBD-4C5B-B581-DBD56699F5FF}">
+  DTS:VersionBuild="26"
+  DTS:VersionGUID="{63D64F73-A123-4A03-94AF-3CEAC74F311D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -53,6 +53,311 @@
       DTS:ObjectName="Contenedor Dimensiones">
       <DTS:Variables />
       <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor Dimensiones\DT_Almacen"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{12D1B4F5-C31F-444A-9256-B3630F4C4D5B}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DT_Almacen"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Almacenes"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Almacenes]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Output].Columns[AlmacenID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Output].ExternalColumns[AlmacenID]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Output].Columns[AlmacenID]"
+                          name="AlmacenID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Output].Columns[Almacen]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Output].ExternalColumns[Almacen]"
+                          length="50"
+                          lineageId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Output].Columns[Almacen]"
+                          name="Almacen"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Output].Columns[TerritorioID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Output].ExternalColumns[TerritorioID]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Output].Columns[TerritorioID]"
+                          name="TerritorioID"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Output].ExternalColumns[AlmacenID]"
+                          dataType="i4"
+                          name="AlmacenID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Output].ExternalColumns[Almacen]"
+                          dataType="wstr"
+                          length="50"
+                          name="Almacen" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Output].ExternalColumns[TerritorioID]"
+                          dataType="i4"
+                          name="TerritorioID" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Error Output].Columns[AlmacenID]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Error Output].Columns[AlmacenID]"
+                          name="AlmacenID" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Error Output].Columns[Almacen]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Error Output].Columns[Almacen]"
+                          name="Almacen" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Error Output].Columns[TerritorioID]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Error Output].Columns[TerritorioID]"
+                          name="TerritorioID" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DT_Almacenes"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DT_Almacen]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes.Inputs[OLE DB Destination Input].Columns[AlmacenID]"
+                          cachedDataType="i4"
+                          cachedName="AlmacenID"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes.Inputs[OLE DB Destination Input].ExternalColumns[AlmacenID]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Output].Columns[AlmacenID]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes.Inputs[OLE DB Destination Input].Columns[Almacen]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Almacen"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes.Inputs[OLE DB Destination Input].ExternalColumns[Almacen]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Output].Columns[Almacen]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes.Inputs[OLE DB Destination Input].Columns[TerritorioID]"
+                          cachedDataType="i4"
+                          cachedName="TerritorioID"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes.Inputs[OLE DB Destination Input].ExternalColumns[TerritorioID]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Output].Columns[TerritorioID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes.Inputs[OLE DB Destination Input].ExternalColumns[AlmacenID]"
+                          dataType="i4"
+                          name="AlmacenID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes.Inputs[OLE DB Destination Input].ExternalColumns[Almacen]"
+                          dataType="wstr"
+                          length="50"
+                          name="Almacen" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes.Inputs[OLE DB Destination Input].ExternalColumns[TerritorioID]"
+                          dataType="i4"
+                          name="TerritorioID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contenedor Dimensiones\DT_Almacen.Paths[OLE DB Source Output]"
+                  endId="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Contenedor Dimensiones\DT_Almacen\Almacenes.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
         <DTS:Executable
           DTS:refId="Package\Contenedor Dimensiones\DT_Cliente"
           DTS:CreationName="Microsoft.Pipeline"
@@ -444,20 +749,1878 @@
             </pipeline>
           </DTS:ObjectData>
         </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor Dimensiones\DT_Empleado"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{4585DAD3-86DB-4ADB-AFBE-4001FB7FF9F3}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DT_Empleado"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_Empleado\Derived Column"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Derived Column"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Dimensiones\DT_Empleado\Derived Column.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Derived Column.Inputs[Derived Column Input].Columns[TerritorioID]"
+                          cachedDataType="i4"
+                          cachedName="TerritorioID"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[TerritorioID]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Empleado\Derived Column.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Contenedor Dimensiones\DT_Empleado\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Derived Column.Outputs[Derived Column Output].Columns[TerritorioID_clean]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Derived Column.Outputs[Derived Column Output].Columns[TerritorioID_clean]"
+                          name="TerritorioID_clean"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[ISNULL](#{Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[TerritorioID]}) ? 0 : #{Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[TerritorioID]}</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">ISNULL(TerritorioID) ? 0 : TerritorioID</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Empleado\Derived Column.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Contenedor Dimensiones\DT_Empleado\Derived Column.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DT_Empleado"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DT_Empleado]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].Columns[EmpleadoID]"
+                          cachedDataType="i4"
+                          cachedName="EmpleadoID"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[EmpleadoID]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[EmpleadoID]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].Columns[Cargo]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Cargo"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[Cargo]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].Columns[FechaNacimiento]"
+                          cachedDataType="dbDate"
+                          cachedName="FechaNacimiento"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[FechaNacimiento]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[FechaNacimiento]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].Columns[EstadoCivil]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="EstadoCivil"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[EstadoCivil]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[EstadoCivil]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].Columns[Genero]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="Genero"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Genero]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[Genero]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].Columns[FechaContratacion]"
+                          cachedDataType="dbDate"
+                          cachedName="FechaContratacion"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[FechaContratacion]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[FechaContratacion]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].Columns[HorasVacaciones]"
+                          cachedDataType="i2"
+                          cachedName="HorasVacaciones"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[HorasVacaciones]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[HorasVacaciones]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].Columns[TerritorioID_clean]"
+                          cachedDataType="i4"
+                          cachedName="TerritorioID_clean"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[TerritorioID]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Derived Column.Outputs[Derived Column Output].Columns[TerritorioID_clean]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[EmpleadoID]"
+                          dataType="i4"
+                          name="EmpleadoID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                          dataType="wstr"
+                          length="50"
+                          name="Cargo" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[FechaNacimiento]"
+                          dataType="dbDate"
+                          name="FechaNacimiento" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[EstadoCivil]"
+                          dataType="wstr"
+                          length="1"
+                          name="EstadoCivil" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Genero]"
+                          dataType="wstr"
+                          length="1"
+                          name="Genero" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[FechaContratacion]"
+                          dataType="dbDate"
+                          name="FechaContratacion" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[HorasVacaciones]"
+                          dataType="i2"
+                          name="HorasVacaciones" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[TerritorioID]"
+                          dataType="i4"
+                          name="TerritorioID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Empleado"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Empleados]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[EmpleadoID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].ExternalColumns[EmpleadoID]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[EmpleadoID]"
+                          name="EmpleadoID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[Cargo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].ExternalColumns[Cargo]"
+                          length="50"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[Cargo]"
+                          name="Cargo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[FechaNacimiento]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].ExternalColumns[FechaNacimiento]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[FechaNacimiento]"
+                          name="FechaNacimiento"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[EstadoCivil]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].ExternalColumns[EstadoCivil]"
+                          length="1"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[EstadoCivil]"
+                          name="EstadoCivil"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[Genero]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].ExternalColumns[Genero]"
+                          length="1"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[Genero]"
+                          name="Genero"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[FechaContratacion]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].ExternalColumns[FechaContratacion]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[FechaContratacion]"
+                          name="FechaContratacion"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[HorasVacaciones]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].ExternalColumns[HorasVacaciones]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[HorasVacaciones]"
+                          name="HorasVacaciones"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[TerritorioID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].ExternalColumns[TerritorioID]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].Columns[TerritorioID]"
+                          name="TerritorioID"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].ExternalColumns[EmpleadoID]"
+                          dataType="i4"
+                          name="EmpleadoID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].ExternalColumns[Cargo]"
+                          dataType="wstr"
+                          length="50"
+                          name="Cargo" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].ExternalColumns[FechaNacimiento]"
+                          dataType="dbDate"
+                          name="FechaNacimiento" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].ExternalColumns[EstadoCivil]"
+                          dataType="wstr"
+                          length="1"
+                          name="EstadoCivil" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].ExternalColumns[Genero]"
+                          dataType="wstr"
+                          length="1"
+                          name="Genero" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].ExternalColumns[FechaContratacion]"
+                          dataType="dbDate"
+                          name="FechaContratacion" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].ExternalColumns[HorasVacaciones]"
+                          dataType="i2"
+                          name="HorasVacaciones" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output].ExternalColumns[TerritorioID]"
+                          dataType="i4"
+                          name="TerritorioID" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[EmpleadoID]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[EmpleadoID]"
+                          name="EmpleadoID" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[Cargo]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[Cargo]"
+                          name="Cargo" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[FechaNacimiento]"
+                          dataType="dbDate"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[FechaNacimiento]"
+                          name="FechaNacimiento" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[EstadoCivil]"
+                          dataType="wstr"
+                          length="1"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[EstadoCivil]"
+                          name="EstadoCivil" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[Genero]"
+                          dataType="wstr"
+                          length="1"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[Genero]"
+                          name="Genero" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[FechaContratacion]"
+                          dataType="dbDate"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[FechaContratacion]"
+                          name="FechaContratacion" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[HorasVacaciones]"
+                          dataType="i2"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[HorasVacaciones]"
+                          name="HorasVacaciones" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[TerritorioID]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[TerritorioID]"
+                          name="TerritorioID" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contenedor Dimensiones\DT_Empleado.Paths[Derived Column Output]"
+                  endId="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Contenedor Dimensiones\DT_Empleado\Derived Column.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Contenedor Dimensiones\DT_Empleado.Paths[OLE DB Source Output]"
+                  endId="Package\Contenedor Dimensiones\DT_Empleado\Derived Column.Inputs[Derived Column Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Contenedor Dimensiones\DT_Empleado\Empleado.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor Dimensiones\DT_Pais_Almacen"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{7A6F58AB-DBE5-4CC4-9BBF-7205D86DEE39}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DT_Pais_Almacen"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\DT_Pais_Almacen"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DT_Pais_Almacen"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DT_Pais_Almacen]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\DT_Pais_Almacen.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\DT_Pais_Almacen.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\DT_Pais_Almacen.Inputs[OLE DB Destination Input].Columns[PaisID]"
+                          cachedDataType="wstr"
+                          cachedLength="3"
+                          cachedName="PaisID"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Pais_Almacen\DT_Pais_Almacen.Inputs[OLE DB Destination Input].ExternalColumns[PaisID]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Output].Columns[PaisID]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\DT_Pais_Almacen.Inputs[OLE DB Destination Input].Columns[Pais]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Pais"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Pais_Almacen\DT_Pais_Almacen.Inputs[OLE DB Destination Input].ExternalColumns[Pais]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Output].Columns[Pais]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\DT_Pais_Almacen.Inputs[OLE DB Destination Input].ExternalColumns[PaisID]"
+                          dataType="wstr"
+                          length="3"
+                          name="PaisID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\DT_Pais_Almacen.Inputs[OLE DB Destination Input].ExternalColumns[Pais]"
+                          dataType="wstr"
+                          length="50"
+                          name="Pais" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\DT_Pais_Almacen.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Contenedor Dimensiones\DT_Pais_Almacen\DT_Pais_Almacen.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\DT_Pais_Almacen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Almacen\DT_Pais_Almacen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\DT_Pais_Almacen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Almacen\DT_Pais_Almacen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Paises"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Paises]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Output].Columns[PaisID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Output].ExternalColumns[PaisID]"
+                          length="3"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Output].Columns[PaisID]"
+                          name="PaisID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Output].Columns[Pais]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Output].ExternalColumns[Pais]"
+                          length="50"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Output].Columns[Pais]"
+                          name="Pais"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Output].ExternalColumns[PaisID]"
+                          dataType="wstr"
+                          length="3"
+                          name="PaisID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Output].ExternalColumns[Pais]"
+                          dataType="wstr"
+                          length="50"
+                          name="Pais" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Error Output].Columns[PaisID]"
+                          dataType="wstr"
+                          length="3"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Error Output].Columns[PaisID]"
+                          name="PaisID" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Error Output].Columns[Pais]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Error Output].Columns[Pais]"
+                          name="Pais" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contenedor Dimensiones\DT_Pais_Almacen.Paths[OLE DB Source Output]"
+                  endId="Package\Contenedor Dimensiones\DT_Pais_Almacen\DT_Pais_Almacen.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor Dimensiones\DT_Pais_Empleado"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{A0973BC5-D578-427B-9381-2254CEB25095}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DT_Pais_Empleado"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DT_Pais_Empleado"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DT_Pais_Empleado]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado.Inputs[OLE DB Destination Input].Columns[PaisID]"
+                          cachedDataType="wstr"
+                          cachedLength="3"
+                          cachedName="PaisID"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[PaisID]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Output].Columns[PaisID]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado.Inputs[OLE DB Destination Input].Columns[Pais]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Pais"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Pais]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Output].Columns[Pais]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[PaisID]"
+                          dataType="wstr"
+                          length="3"
+                          name="PaisID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Pais]"
+                          dataType="wstr"
+                          length="50"
+                          name="Pais" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Paises"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Paises]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Output].Columns[PaisID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Output].ExternalColumns[PaisID]"
+                          length="3"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Output].Columns[PaisID]"
+                          name="PaisID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Output].Columns[Pais]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Output].ExternalColumns[Pais]"
+                          length="50"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Output].Columns[Pais]"
+                          name="Pais"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Output].ExternalColumns[PaisID]"
+                          dataType="wstr"
+                          length="3"
+                          name="PaisID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Output].ExternalColumns[Pais]"
+                          dataType="wstr"
+                          length="50"
+                          name="Pais" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Error Output].Columns[PaisID]"
+                          dataType="wstr"
+                          length="3"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Error Output].Columns[PaisID]"
+                          name="PaisID" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Error Output].Columns[Pais]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Error Output].Columns[Pais]"
+                          name="Pais" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contenedor Dimensiones\DT_Pais_Empleado.Paths[OLE DB Source Output]"
+                  endId="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{A4C16B7E-7115-46D7-8833-F78AE9EB4458}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DT_Territorio_Almacen"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DT_Territorio_Almacen"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DT_Territorio_Almacen]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Inputs[OLE DB Destination Input].Columns[TerritorioID]"
+                          cachedDataType="i4"
+                          cachedName="TerritorioID"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Inputs[OLE DB Destination Input].ExternalColumns[TerritorioID]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].Columns[TerritorioID]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Inputs[OLE DB Destination Input].Columns[Territorio]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Territorio"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Inputs[OLE DB Destination Input].ExternalColumns[Territorio]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].Columns[Territorio]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Inputs[OLE DB Destination Input].Columns[PaisID]"
+                          cachedDataType="wstr"
+                          cachedLength="3"
+                          cachedName="PaisID"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Inputs[OLE DB Destination Input].ExternalColumns[PaisID]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].Columns[PaisID]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Inputs[OLE DB Destination Input].Columns[Grupo]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Grupo"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Inputs[OLE DB Destination Input].ExternalColumns[Grupo]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].Columns[Grupo]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Inputs[OLE DB Destination Input].ExternalColumns[TerritorioID]"
+                          dataType="i4"
+                          name="TerritorioID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Inputs[OLE DB Destination Input].ExternalColumns[Territorio]"
+                          dataType="wstr"
+                          length="50"
+                          name="Territorio" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Inputs[OLE DB Destination Input].ExternalColumns[Grupo]"
+                          dataType="wstr"
+                          length="50"
+                          name="Grupo" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Inputs[OLE DB Destination Input].ExternalColumns[PaisID]"
+                          dataType="wstr"
+                          length="3"
+                          name="PaisID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Territorios"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Territorios]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].Columns[TerritorioID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].ExternalColumns[TerritorioID]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].Columns[TerritorioID]"
+                          name="TerritorioID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].Columns[Territorio]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].ExternalColumns[Territorio]"
+                          length="50"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].Columns[Territorio]"
+                          name="Territorio"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].Columns[PaisID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].ExternalColumns[PaisID]"
+                          length="3"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].Columns[PaisID]"
+                          name="PaisID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].Columns[Grupo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].ExternalColumns[Grupo]"
+                          length="50"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].Columns[Grupo]"
+                          name="Grupo"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].ExternalColumns[TerritorioID]"
+                          dataType="i4"
+                          name="TerritorioID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].ExternalColumns[Territorio]"
+                          dataType="wstr"
+                          length="50"
+                          name="Territorio" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].ExternalColumns[PaisID]"
+                          dataType="wstr"
+                          length="3"
+                          name="PaisID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output].ExternalColumns[Grupo]"
+                          dataType="wstr"
+                          length="50"
+                          name="Grupo" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Error Output].Columns[TerritorioID]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Error Output].Columns[TerritorioID]"
+                          name="TerritorioID" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Error Output].Columns[Territorio]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Error Output].Columns[Territorio]"
+                          name="Territorio" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Error Output].Columns[PaisID]"
+                          dataType="wstr"
+                          length="3"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Error Output].Columns[PaisID]"
+                          name="PaisID" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Error Output].Columns[Grupo]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Error Output].Columns[Grupo]"
+                          name="Grupo" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contenedor Dimensiones\DT_Territorio_Almacen.Paths[OLE DB Source Output]"
+                  endId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{7B96DCCF-1B7F-4EF8-91BD-8E317F9DE223}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DT_Territorio_Empleado"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DT_Territorio_Empleado"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DT_Territorio_Empleado]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Inputs[OLE DB Destination Input].Columns[TerritorioID]"
+                          cachedDataType="i4"
+                          cachedName="TerritorioID"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[TerritorioID]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].Columns[TerritorioID]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Inputs[OLE DB Destination Input].Columns[Territorio]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Territorio"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Territorio]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].Columns[Territorio]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Inputs[OLE DB Destination Input].Columns[PaisID]"
+                          cachedDataType="wstr"
+                          cachedLength="3"
+                          cachedName="PaisID"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[PaisID]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].Columns[PaisID]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Inputs[OLE DB Destination Input].Columns[Grupo]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Grupo"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Grupo]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].Columns[Grupo]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[TerritorioID]"
+                          dataType="i4"
+                          name="TerritorioID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Territorio]"
+                          dataType="wstr"
+                          length="50"
+                          name="Territorio" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[Grupo]"
+                          dataType="wstr"
+                          length="50"
+                          name="Grupo" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Inputs[OLE DB Destination Input].ExternalColumns[PaisID]"
+                          dataType="wstr"
+                          length="3"
+                          name="PaisID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Territorio"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Territorios]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].Columns[TerritorioID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].ExternalColumns[TerritorioID]"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].Columns[TerritorioID]"
+                          name="TerritorioID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].Columns[Territorio]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].ExternalColumns[Territorio]"
+                          length="50"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].Columns[Territorio]"
+                          name="Territorio"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].Columns[PaisID]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].ExternalColumns[PaisID]"
+                          length="3"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].Columns[PaisID]"
+                          name="PaisID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].Columns[Grupo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].ExternalColumns[Grupo]"
+                          length="50"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].Columns[Grupo]"
+                          name="Grupo"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].ExternalColumns[TerritorioID]"
+                          dataType="i4"
+                          name="TerritorioID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].ExternalColumns[Territorio]"
+                          dataType="wstr"
+                          length="50"
+                          name="Territorio" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].ExternalColumns[PaisID]"
+                          dataType="wstr"
+                          length="3"
+                          name="PaisID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output].ExternalColumns[Grupo]"
+                          dataType="wstr"
+                          length="50"
+                          name="Grupo" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Error Output].Columns[TerritorioID]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Error Output].Columns[TerritorioID]"
+                          name="TerritorioID" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Error Output].Columns[Territorio]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Error Output].Columns[Territorio]"
+                          name="Territorio" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Error Output].Columns[PaisID]"
+                          dataType="wstr"
+                          length="3"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Error Output].Columns[PaisID]"
+                          name="PaisID" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Error Output].Columns[Grupo]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Error Output].Columns[Grupo]"
+                          name="Grupo" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contenedor Dimensiones\DT_Territorio_Empleado.Paths[OLE DB Source Output]"
+                  endId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado.Inputs[OLE DB Destination Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
       </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Contenedor Dimensiones.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{E0B824D0-8496-4CCD-B764-A3C64C4C25C6}"
+          DTS:From="Package\Contenedor Dimensiones\DT_Pais_Empleado"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Contenedor Dimensiones\DT_Territorio_Empleado" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Contenedor Dimensiones.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{8B0E73B9-E4FE-4041-9102-5B8B4E7718BC}"
+          DTS:From="Package\Contenedor Dimensiones\DT_Territorio_Empleado"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Contenedor Dimensiones\DT_Empleado" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Contenedor Dimensiones.PrecedenceConstraints[Constraint 2]"
+          DTS:CreationName=""
+          DTS:DTSID="{DDC6E6D0-6B0C-476A-8572-0A7987FB2280}"
+          DTS:From="Package\Contenedor Dimensiones\DT_Pais_Almacen"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 2"
+          DTS:To="Package\Contenedor Dimensiones\DT_Territorio_Almacen" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Contenedor Dimensiones.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{18252F82-57C1-4E34-94D3-B7AB52F53712}"
+          DTS:From="Package\Contenedor Dimensiones\DT_Territorio_Almacen"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Contenedor Dimensiones\DT_Almacen" />
+      </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Reinicio Dimensiones"
+      DTS:refId="Package\Tareas SQL"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
       DTS:DTSID="{8A397257-FB9E-4451-B92E-4537B6E09132}"
       DTS:ExecutableType="STOCK:SEQUENCE"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Reinicio Dimensiones">
+      DTS:ObjectName="Tareas SQL">
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
-          DTS:refId="Package\Reinicio Dimensiones\Script Reinicio Dimensiones"
+          DTS:refId="Package\Tareas SQL\Crear fila Sin País"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{E24466FA-4381-460D-B3A0-1F259A154F4C}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Crear fila Sin País"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{AEC3CC63-0999-4C6D-9450-1F16735F3676}"
+              SQLTask:SqlStatementSource="IF NOT EXISTS (SELECT 1 FROM dbo.DT_Pais_Empleado WHERE PaisID = 0)&#xA;BEGIN&#xA;    INSERT INTO dbo.DT_Pais_Empleado (PaisID, Pais)&#xA;    VALUES (0, 'S/P');&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Tareas SQL\Crear fila Sin Territorio"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{48AE54EC-3F76-4775-8E79-A899E983D2E2}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Crear fila Sin Territorio"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{AEC3CC63-0999-4C6D-9450-1F16735F3676}"
+              SQLTask:SqlStatementSource="IF NOT EXISTS (SELECT 1 FROM dbo.DT_Territorio_Empleado WHERE TerritorioID = 0)&#xA;BEGIN&#xA;    -- Añadimos la columna 'Grupo' y le damos un valor, ya que no permite nulos&#xA;    INSERT INTO dbo.DT_Territorio_Empleado (TerritorioID, Territorio, PaisID, Grupo)&#xA;    VALUES (0, 'S/T', 0, 'S/G'); -- Puedes usar 'S/G', 'N/A', o 'Sin Grupo'&#xA;END" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Tareas SQL\Script Reinicio Dimensiones"
           DTS:CreationName="Microsoft.ExecuteSQLTask"
           DTS:Description="Execute SQL Task"
           DTS:DTSID="{22044A8F-D69C-4FFC-B29C-16B38B587802}"
@@ -474,6 +2637,24 @@
           </DTS:ObjectData>
         </DTS:Executable>
       </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Tareas SQL.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{683DDA13-80E6-465D-9CE7-C165DE6DA52B}"
+          DTS:From="Package\Tareas SQL\Crear fila Sin País"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Tareas SQL\Crear fila Sin Territorio" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Tareas SQL.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{E8C28E23-F42E-4157-BBC8-6DC774AA40CD}"
+          DTS:From="Package\Tareas SQL\Script Reinicio Dimensiones"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Tareas SQL\Crear fila Sin País" />
+      </DTS:PrecedenceConstraints>
     </DTS:Executable>
   </DTS:Executables>
   <DTS:PrecedenceConstraints>
@@ -481,7 +2662,7 @@
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
       DTS:DTSID="{807D113D-0272-4A78-B249-355E4A49473A}"
-      DTS:From="Package\Reinicio Dimensiones"
+      DTS:From="Package\Tareas SQL"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\Contenedor Dimensiones" />
@@ -497,43 +2678,243 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="139.333333333334,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Almacen"
+          TopLeft="34.1354111835051,257.624994624406" />
         <NodeLayout
           Size="130,42"
           Id="Package\Contenedor Dimensiones\DT_Cliente"
-          TopLeft="30,21" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="401,295"
-          Size="401,338"
-          Id="Package\Contenedor Dimensiones"
-          TopLeft="433,199" />
+          TopLeft="35.4687499185093,28.3124998692423" />
         <NodeLayout
-          Size="208,42"
-          Id="Package\Reinicio Dimensiones\Script Reinicio Dimensiones"
-          TopLeft="12,28" />
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="248,125"
-          Size="248,168"
-          Id="Package\Reinicio Dimensiones"
-          TopLeft="59,281" />
+          Size="145.333333333334,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Empleado"
+          TopLeft="31.6249966379256,108.233330706557" />
+        <NodeLayout
+          Size="162.666666666667,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Pais_Almacen"
+          TopLeft="223.48957480009,184.291662453363" />
+        <NodeLayout
+          Size="169.333333333334,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Pais_Empleado"
+          TopLeft="214.374993527308,30.783332019945" />
+        <NodeLayout
+          Size="188,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Territorio_Almacen"
+          TopLeft="12.2604115094681,184.520829279845" />
+        <NodeLayout
+          Size="194.666666666667,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Territorio_Empleado"
+          TopLeft="208.45832702828,114.733330590328" />
         <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="307,366.5">
+          Id="Package\Contenedor Dimensiones.PrecedenceConstraints[Constraint]"
+          TopLeft="302.416660277794,73.4499986866116">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="126,0"
+              EndConnector="0,41.283331903716"
               Start="0,0"
-              End="118.5,0">
+              End="0,33.783331903716">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="118.5,0" />
+                    End="0,33.783331903716" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Contenedor Dimensiones.PrecedenceConstraints[Constraint 1]"
+          TopLeft="208.45832702828,132.816663981775">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-31.4999970570207,0"
+              Start="0,0"
+              End="-23.9999970570207,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-23.9999970570207,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Contenedor Dimensiones.PrecedenceConstraints[Constraint 2]"
+          TopLeft="223.48957480009,205.739579199938">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-23.2291632906222,0"
+              Start="0,0"
+              End="-15.7291632906222,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-15.7291632906222,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Contenedor Dimensiones.PrecedenceConstraints[Constraint 3]"
+          TopLeft="105.03124467982,227.187495946512">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,30.4374986778942"
+              Start="0,0"
+              End="0,22.9374986778942">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.9374986778942" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="436.666666666667,376.666666666667"
+          Size="436.666666666667,419.333333333334"
+          Id="Package\Contenedor Dimensiones"
+          TopLeft="418.156250221189,199" />
+        <NodeLayout
+          Size="161.333333333334,42.6666666666667"
+          Id="Package\Tareas SQL\Crear fila Sin País"
+          TopLeft="23.0694432264815,112.644440916247" />
+        <NodeLayout
+          Size="186.666666666667,42.6666666666667"
+          Id="Package\Tareas SQL\Crear fila Sin Territorio"
+          TopLeft="31.1423597728523,188.622217490409" />
+        <NodeLayout
+          Size="208,42.6666666666667"
+          Id="Package\Tareas SQL\Script Reinicio Dimensiones"
+          TopLeft="13.5624999767169,28" />
+        <EdgeLayout
+          Id="Package\Tareas SQL.PrecedenceConstraints[Constraint]"
+          TopLeft="103.736109893148,155.311107582914">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="20.7395832130375,33.3111099074951"
+              Start="0,0"
+              End="20.7395832130375,25.8111099074951">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.6555549537475" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.6555549537475"
+                    Point2="0,16.6555549537475"
+                    Point3="4,16.6555549537475" />
+                  <mssgle:LineSegment
+                    End="16.7395832130375,16.6555549537475" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.7395832130375,16.6555549537475"
+                    Point2="20.7395832130375,16.6555549537475"
+                    Point3="20.7395832130375,20.6555549537475" />
+                  <mssgle:LineSegment
+                    End="20.7395832130375,25.8111099074951" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tareas SQL.PrecedenceConstraints[Constraint 1]"
+          TopLeft="117.562499976717,70.6666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-13.8263900835688,41.9777742495802"
+              Start="0,0"
+              End="-13.8263900835688,34.4777742495802">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.9888871247901" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.9888871247901"
+                    Point2="0,20.9888871247901"
+                    Point3="-4,20.9888871247901" />
+                  <mssgle:LineSegment
+                    End="-9.82639008356878,20.9888871247901" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-9.82639008356878,20.9888871247901"
+                    Point2="-13.8263900835688,20.9888871247901"
+                    Point3="-13.8263900835688,24.9888871247901" />
+                  <mssgle:LineSegment
+                    End="-13.8263900835688,34.4777742495802" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="256.666666666667,286"
+          Size="256.666666666667,329.333333333334"
+          Id="Package\Tareas SQL"
+          TopLeft="58.2187500116415,268.000000232458" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="314.885416678308,432.666666899125">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="103.270833542881,-24.000000232458"
+              Start="0,0"
+              End="95.7708335428808,-24.000000232458">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="47.6354167714404,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="47.6354167714404,0"
+                    Point2="51.6354167714404,0"
+                    Point3="51.6354167714404,-4" />
+                  <mssgle:LineSegment
+                    End="51.6354167714404,-20.000000232458" />
+                  <mssgle:CubicBezierSegment
+                    Point1="51.6354167714404,-20.000000232458"
+                    Point2="51.6354167714404,-24.000000232458"
+                    Point3="55.6354167714404,-24.000000232458" />
+                  <mssgle:LineSegment
+                    End="95.7708335428808,-24.000000232458" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -546,16 +2927,98 @@
     </LayoutInfo>
   </Package>
   <TaskHost
+    design-time-name="Package\Contenedor Dimensiones\DT_Almacen">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="149.333333333334,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes"
+          TopLeft="127,204" />
+        <NodeLayout
+          Size="129.333333333334,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Almacen\Almacenes"
+          TopLeft="146,106" />
+        <EdgeLayout
+          Id="Package\Contenedor Dimensiones\DT_Almacen.Paths[OLE DB Source Output]"
+          TopLeft="210.666666666667,148.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9.00000000000006,55.3333333333333"
+              Start="0,0"
+              End="-9.00000000000006,47.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.6666666666666" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.6666666666666"
+                    Point2="0,27.6666666666666"
+                    Point3="-4,27.6666666666666" />
+                  <mssgle:LineSegment
+                    End="-5.00000000000006,27.6666666666666" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.00000000000006,27.6666666666666"
+                    Point2="-9.00000000000006,27.6666666666666"
+                    Point3="-9.00000000000006,31.6666666666666" />
+                  <mssgle:LineSegment
+                    End="-9.00000000000006,47.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Dimensiones\DT_Almacen\Almacenes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Dimensiones\DT_Almacen\DT_Almacenes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
     design-time-name="Package\Contenedor Dimensiones\DT_Cliente">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="130,42"
+          Id="Package\Contenedor Dimensiones\DT_Cliente\DT_Cliente"
+          TopLeft="550,348" />
         <NodeLayout
           Size="116,42"
           Id="Package\Contenedor Dimensiones\DT_Cliente\Clientes"
           TopLeft="555,121" />
         <NodeLayout
-          Size="163,42"
+          Size="162.666666666667,42"
           Id="Package\Contenedor Dimensiones\DT_Cliente\NomCliente y Null"
           TopLeft="530,239" />
         <EdgeLayout
@@ -577,13 +3040,11 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="130,42"
-          Id="Package\Contenedor Dimensiones\DT_Cliente\DT_Cliente"
-          TopLeft="550,348" />
         <EdgeLayout
           Id="Package\Contenedor Dimensiones\DT_Cliente.Paths[Derived Column Output]"
           TopLeft="613.25,281">
@@ -603,12 +3064,27 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Dimensiones\DT_Cliente\DT_Cliente">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Contenedor Dimensiones\DT_Cliente\Clientes">
     <Properties>
@@ -622,8 +3098,381 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Contenedor Dimensiones\DT_Empleado">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="145.333333333334,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado"
+          TopLeft="116.428571428571,286.428571428571" />
+        <NodeLayout
+          Size="125.333333333334,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Empleado\Empleado"
+          TopLeft="130,91" />
+        <NodeLayout
+          Size="154.666666666667,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Empleado\Derived Column"
+          TopLeft="123.571428571429,187.142857142857" />
+        <EdgeLayout
+          Id="Package\Contenedor Dimensiones\DT_Empleado.Paths[OLE DB Source Output]"
+          TopLeft="192.666666666667,133.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.23809523809524,53.4761904761905"
+              Start="0,0"
+              End="8.23809523809524,45.9761904761905">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.7380952380953" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.7380952380953"
+                    Point2="0,26.7380952380953"
+                    Point3="4,26.7380952380953" />
+                  <mssgle:LineSegment
+                    End="4.23809523809524,26.7380952380953" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.23809523809524,26.7380952380953"
+                    Point2="8.23809523809524,26.7380952380953"
+                    Point3="8.23809523809524,30.7380952380953" />
+                  <mssgle:LineSegment
+                    End="8.23809523809524,45.9761904761905" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Contenedor Dimensiones\DT_Empleado.Paths[Derived Column Output]"
+          TopLeft="200.904761904762,229.809523809524">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-11.8095238095238,56.6190476190476"
+              Start="0,0"
+              End="-11.8095238095238,49.1190476190476">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.3095238095238" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.3095238095238"
+                    Point2="0,28.3095238095238"
+                    Point3="-4,28.3095238095238" />
+                  <mssgle:LineSegment
+                    End="-7.80952380952382,28.3095238095238" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7.80952380952382,28.3095238095238"
+                    Point2="-11.8095238095238,28.3095238095238"
+                    Point3="-11.8095238095238,32.3095238095238" />
+                  <mssgle:LineSegment
+                    End="-11.8095238095238,49.1190476190476" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Contenedor Dimensiones\DT_Cliente\DT_Cliente">
+    design-time-name="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Dimensiones\DT_Empleado\Empleado">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Contenedor Dimensiones\DT_Pais_Almacen">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="109.333333333334,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises"
+          TopLeft="193,88" />
+        <NodeLayout
+          Size="162.666666666667,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Pais_Almacen\DT_Pais_Almacen"
+          TopLeft="166.666666666667,212.5" />
+        <EdgeLayout
+          Id="Package\Contenedor Dimensiones\DT_Pais_Almacen.Paths[OLE DB Source Output]"
+          TopLeft="247.833333333333,130.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81.8333333333333"
+              Start="0,0"
+              End="0,74.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Dimensiones\DT_Pais_Almacen\DT_Pais_Almacen">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Dimensiones\DT_Pais_Almacen\Paises">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Contenedor Dimensiones\DT_Pais_Empleado">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="109.333333333334,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises"
+          TopLeft="125,53" />
+        <NodeLayout
+          Size="169.333333333334,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado"
+          TopLeft="93.3333333333333,152.5" />
+        <EdgeLayout
+          Id="Package\Contenedor Dimensiones\DT_Pais_Empleado.Paths[OLE DB Source Output]"
+          TopLeft="178.833333333333,95.6666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56.8333333333333"
+              Start="0,0"
+              End="0,49.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,49.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Contenedor Dimensiones\DT_Territorio_Almacen">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="128,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios"
+          TopLeft="160,81" />
+        <NodeLayout
+          Size="188,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen"
+          TopLeft="153,218" />
+        <EdgeLayout
+          Id="Package\Contenedor Dimensiones\DT_Territorio_Almacen.Paths[OLE DB Source Output]"
+          TopLeft="224,123.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23,94.3333333333333"
+              Start="0,0"
+              End="23,86.8333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.1666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.1666666666667"
+                    Point2="0,47.1666666666667"
+                    Point3="4,47.1666666666667" />
+                  <mssgle:LineSegment
+                    End="19,47.1666666666667" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19,47.1666666666667"
+                    Point2="23,47.1666666666667"
+                    Point3="23,51.1666666666667" />
+                  <mssgle:LineSegment
+                    End="23,86.8333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Dimensiones\DT_Territorio_Almacen\DT_Territorio_Almacen">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Dimensiones\DT_Territorio_Almacen\Territorios">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Contenedor Dimensiones\DT_Territorio_Empleado">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="122.666666666667,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio"
+          TopLeft="177,119" />
+        <NodeLayout
+          Size="194.666666666667,42.6666666666667"
+          Id="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado"
+          TopLeft="138,271" />
+        <EdgeLayout
+          Id="Package\Contenedor Dimensiones\DT_Territorio_Empleado.Paths[OLE DB Source Output]"
+          TopLeft="236.833333333333,161.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,109.333333333333"
+              Start="0,0"
+              End="0,101.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,101.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
