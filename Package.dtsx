@@ -11,11 +11,35 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="26"
-  DTS:VersionGUID="{63D64F73-A123-4A03-94AF-3CEAC74F311D}">
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{F50A0A36-0DDA-4F1A-9A14-43BDF9D07C69}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{0051239B-0B7C-4E56-AB27-0BC8DEFB55BE}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Bases\DT_FechaCom.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{0660A30F-B21B-49A1-807C-0A88EEA08B5F}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Bases\DT_FechaEnv.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[LocalHost.BikeZ]"
       DTS:CreationName="OLEDB"
@@ -881,7 +905,7 @@
                       dataType="System.Int32"
                       description="Specifies the mode used to access the database."
                       name="AccessMode"
-                      typeConverter="AccessMode">0</property>
+                      typeConverter="AccessMode">3</property>
                     <property
                       dataType="System.Boolean"
                       description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -1290,6 +1314,1119 @@
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\Contenedor Dimensiones\DT_FechaCom"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{CC0F1CE9-BA6C-4405-80D9-E053F42D73E8}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DT_FechaCom"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Dia, Mes, Annio"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Inputs[Derived Column Input].Columns[Fecha]"
+                          cachedDataType="date"
+                          cachedName="Fecha"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Output].Columns[Fecha]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[dia]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[dia]"
+                          name="dia"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[DAY](#{Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Output].Columns[Fecha]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">DAY(Fecha)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[mes]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[mes]"
+                          name="mes"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[MONTH](#{Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Output].Columns[Fecha]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">MONTH(Fecha)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[annio]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[annio]"
+                          name="annio"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[YEAR](#{Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Output].Columns[Fecha]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">YEAR(Fecha)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[semana]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[semana]"
+                          name="semana"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[DATEPART]("wk",#{Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Output].Columns[Fecha]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">DATEPART("wk",Fecha)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[semestre]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[semestre]"
+                          name="semestre"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">([MONTH](#{Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Output].Columns[Fecha]}) &lt;= 6) ? 1 : 2</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(MONTH(Fecha) &lt;= 6) ? 1 : 2</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DT_FechaCom"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DT_FechaCom]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input].Columns[dia]"
+                          cachedDataType="i4"
+                          cachedName="dia"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input].ExternalColumns[dia]"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[dia]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input].Columns[mes]"
+                          cachedDataType="i4"
+                          cachedName="mes"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input].ExternalColumns[mes]"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[mes]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input].Columns[annio]"
+                          cachedDataType="i4"
+                          cachedName="annio"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input].ExternalColumns[annio]"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[annio]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input].Columns[semana]"
+                          cachedDataType="i4"
+                          cachedName="semana"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input].ExternalColumns[semana]"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[semana]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input].Columns[semestre]"
+                          cachedDataType="i4"
+                          cachedName="semestre"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input].ExternalColumns[semestre]"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[semestre]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input].Columns[FechaComFull]"
+                          cachedDataType="i4"
+                          cachedName="FechaComFull"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input].ExternalColumns[FechaComID]"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull.Outputs[Derived Column Output].Columns[FechaComFull]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input].ExternalColumns[FechaComID]"
+                          dataType="i4"
+                          name="FechaComID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input].ExternalColumns[dia]"
+                          dataType="i4"
+                          name="dia" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input].ExternalColumns[semana]"
+                          dataType="i4"
+                          name="semana" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input].ExternalColumns[mes]"
+                          dataType="i4"
+                          name="mes" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input].ExternalColumns[semestre]"
+                          dataType="i4"
+                          name="semestre" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input].ExternalColumns[annio]"
+                          dataType="i4"
+                          name="annio" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="Excel Fecha"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">Hoja1$</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Output].Columns[Fecha]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Output].ExternalColumns[Fecha]"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Output].Columns[Fecha]"
+                          name="Fecha"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Output].ExternalColumns[Fecha]"
+                          dataType="date"
+                          name="Fecha" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Error Output].Columns[Fecha]"
+                          dataType="date"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Error Output].Columns[Fecha]"
+                          name="Fecha" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="FechaComFull"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull.Inputs[Derived Column Input].Columns[dia]"
+                          cachedDataType="i4"
+                          cachedName="dia"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[dia]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull.Inputs[Derived Column Input].Columns[mes]"
+                          cachedDataType="i4"
+                          cachedName="mes"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[mes]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull.Inputs[Derived Column Input].Columns[annio]"
+                          cachedDataType="i4"
+                          cachedName="annio"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[annio]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull.Outputs[Derived Column Output].Columns[FechaComFull]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull.Outputs[Derived Column Output].Columns[FechaComFull]"
+                          name="FechaComFull"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">#{Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[dia]} + #{Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[mes]} * 100 + #{Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output].Columns[annio]} * 10000</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">dia + mes * 100 + annio * 10000</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contenedor Dimensiones\DT_FechaCom.Paths[Derived Column Output]"
+                  endId="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull.Inputs[Derived Column Input]"
+                  name="Derived Column Output"
+                  startId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Contenedor Dimensiones\DT_FechaCom.Paths[Derived Column Output1]"
+                  endId="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Contenedor Dimensiones\DT_FechaCom.Paths[Excel Source Output]"
+                  endId="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio.Inputs[Derived Column Input]"
+                  name="Excel Source Output"
+                  startId="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Outputs[Excel Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor Dimensiones\DT_FechaEnv"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{548D20D2-414F-492F-8ED1-97EE5017976E}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DT_FechaEnv"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="dia, mes, annio"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Inputs[Derived Column Input].Columns[Fecha]"
+                          cachedDataType="date"
+                          cachedName="Fecha"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Output].Columns[Fecha]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Output].Columns[dia]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Output].Columns[dia]"
+                          name="dia"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[DAY](#{Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Output].Columns[Fecha]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">DAY(Fecha)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Output].Columns[mes]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Output].Columns[mes]"
+                          name="mes"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[MONTH](#{Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Output].Columns[Fecha]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">MONTH(Fecha)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Output].Columns[annio]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Output].Columns[annio]"
+                          name="annio"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[YEAR](#{Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Output].Columns[Fecha]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">YEAR(Fecha)</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DT_FechaEnv"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DT_FechaEnv]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input].Columns[dia]"
+                          cachedDataType="i4"
+                          cachedName="dia"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input].ExternalColumns[dia]"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Output].Columns[dia]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input].Columns[mes]"
+                          cachedDataType="i4"
+                          cachedName="mes"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input].ExternalColumns[mes]"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Output].Columns[mes]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input].Columns[annio]"
+                          cachedDataType="i4"
+                          cachedName="annio"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input].ExternalColumns[annio]"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Output].Columns[annio]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input].Columns[semana]"
+                          cachedDataType="i4"
+                          cachedName="semana"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input].ExternalColumns[semana]"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Outputs[Derived Column Output].Columns[semana]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input].Columns[semestre]"
+                          cachedDataType="i4"
+                          cachedName="semestre"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input].ExternalColumns[semestre]"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Outputs[Derived Column Output].Columns[semestre]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input].Columns[FechaEnvFull]"
+                          cachedDataType="i4"
+                          cachedName="FechaEnvFull"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input].ExternalColumns[FechaEnvID]"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Outputs[Derived Column Output].Columns[FechaEnvFull]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input].ExternalColumns[FechaEnvID]"
+                          dataType="i4"
+                          name="FechaEnvID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input].ExternalColumns[dia]"
+                          dataType="i4"
+                          name="dia" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input].ExternalColumns[semana]"
+                          dataType="i4"
+                          name="semana" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input].ExternalColumns[mes]"
+                          dataType="i4"
+                          name="mes" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input].ExternalColumns[semestre]"
+                          dataType="i4"
+                          name="semestre" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input].ExternalColumns[annio]"
+                          dataType="i4"
+                          name="annio" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="Excel FechaEnv"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">Hoja1$</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
+                      connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Output].Columns[Fecha]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Output].ExternalColumns[Fecha]"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Output].Columns[Fecha]"
+                          name="Fecha"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Output].ExternalColumns[Fecha]"
+                          dataType="date"
+                          name="Fecha" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Error Output].Columns[Fecha]"
+                          dataType="date"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Error Output].Columns[Fecha]"
+                          name="Fecha" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="semana, semestre, FechaEnvFull"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Inputs[Derived Column Input].Columns[Fecha]"
+                          cachedDataType="date"
+                          cachedName="Fecha"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Output].Columns[Fecha]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Inputs[Derived Column Input].Columns[mes]"
+                          cachedDataType="i4"
+                          cachedName="mes"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Output].Columns[mes]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Inputs[Derived Column Input].Columns[dia]"
+                          cachedDataType="i4"
+                          cachedName="dia"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Output].Columns[dia]" />
+                        <inputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Inputs[Derived Column Input].Columns[annio]"
+                          cachedDataType="i4"
+                          cachedName="annio"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Output].Columns[annio]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Outputs[Derived Column Output].Columns[semana]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Outputs[Derived Column Output].Columns[semana]"
+                          name="semana"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">[DATEPART]("Wk",#{Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Output].Columns[Fecha]})</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">DATEPART("Wk",Fecha)</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Outputs[Derived Column Output].Columns[semestre]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Outputs[Derived Column Output].Columns[semestre]"
+                          name="semestre"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(#{Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Output].Columns[mes]} &lt;= 6) ? 1 : 2</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(mes &lt;= 6) ? 1 : 2</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Outputs[Derived Column Output].Columns[FechaEnvFull]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Outputs[Derived Column Output].Columns[FechaEnvFull]"
+                          name="FechaEnvFull"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">#{Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Output].Columns[dia]} + #{Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Output].Columns[mes]} * 100 + #{Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Output].Columns[annio]} * 10000</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">dia + mes * 100 + annio * 10000</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contenedor Dimensiones\DT_FechaEnv.Paths[Derived Column Output]"
+                  endId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Inputs[Derived Column Input]"
+                  name="Derived Column Output"
+                  startId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Contenedor Dimensiones\DT_FechaEnv.Paths[Derived Column Output1]"
+                  endId="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv.Inputs[OLE DB Destination Input]"
+                  name="Derived Column Output"
+                  startId="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Contenedor Dimensiones\DT_FechaEnv.Paths[Excel Source Output]"
+                  endId="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio.Inputs[Derived Column Input]"
+                  name="Excel Source Output"
+                  startId="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Outputs[Excel Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Contenedor Dimensiones\DT_Pais_Almacen"
           DTS:CreationName="Microsoft.Pipeline"
           DTS:Description="Data Flow Task"
@@ -1623,7 +2760,7 @@
                       dataType="System.Int32"
                       description="Specifies the mode used to access the database."
                       name="AccessMode"
-                      typeConverter="AccessMode">0</property>
+                      typeConverter="AccessMode">3</property>
                     <property
                       dataType="System.Boolean"
                       description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -2248,7 +3385,7 @@
                       dataType="System.Int32"
                       description="Specifies the mode used to access the database."
                       name="AccessMode"
-                      typeConverter="AccessMode">0</property>
+                      typeConverter="AccessMode">3</property>
                     <property
                       dataType="System.Boolean"
                       description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
@@ -2573,6 +3710,14 @@
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 3"
           DTS:To="Package\Contenedor Dimensiones\DT_Almacen" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Contenedor Dimensiones.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{966393FA-8A4C-4127-8D6F-AC94A3CA759A}"
+          DTS:From="Package\Contenedor Dimensiones\DT_FechaCom"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Contenedor Dimensiones\DT_FechaEnv" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -2680,7 +3825,7 @@
       <GraphLayout
         Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="139.333333333334,42.6666666666667"
+          Size="139,43"
           Id="Package\Contenedor Dimensiones\DT_Almacen"
           TopLeft="34.1354111835051,257.624994624406" />
         <NodeLayout
@@ -2688,23 +3833,23 @@
           Id="Package\Contenedor Dimensiones\DT_Cliente"
           TopLeft="35.4687499185093,28.3124998692423" />
         <NodeLayout
-          Size="145.333333333334,42.6666666666667"
+          Size="145,43"
           Id="Package\Contenedor Dimensiones\DT_Empleado"
           TopLeft="31.6249966379256,108.233330706557" />
         <NodeLayout
-          Size="162.666666666667,42.6666666666667"
+          Size="163,43"
           Id="Package\Contenedor Dimensiones\DT_Pais_Almacen"
           TopLeft="223.48957480009,184.291662453363" />
         <NodeLayout
-          Size="169.333333333334,42.6666666666667"
+          Size="169,43"
           Id="Package\Contenedor Dimensiones\DT_Pais_Empleado"
           TopLeft="214.374993527308,30.783332019945" />
         <NodeLayout
-          Size="188,42.6666666666667"
+          Size="188,43"
           Id="Package\Contenedor Dimensiones\DT_Territorio_Almacen"
           TopLeft="12.2604115094681,184.520829279845" />
         <NodeLayout
-          Size="194.666666666667,42.6666666666667"
+          Size="195,43"
           Id="Package\Contenedor Dimensiones\DT_Territorio_Empleado"
           TopLeft="208.45832702828,114.733330590328" />
         <EdgeLayout
@@ -2795,51 +3940,69 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <ContainerLayout
-          HeaderHeight="43"
-          IsExpanded="True"
-          PanelSize="436.666666666667,376.666666666667"
-          Size="436.666666666667,419.333333333334"
-          Id="Package\Contenedor Dimensiones"
-          TopLeft="418.156250221189,199" />
         <NodeLayout
-          Size="161.333333333334,42.6666666666667"
-          Id="Package\Tareas SQL\Crear fila Sin País"
-          TopLeft="23.0694432264815,112.644440916247" />
+          Size="147,42"
+          Id="Package\Contenedor Dimensiones\DT_FechaCom"
+          TopLeft="223,255" />
         <NodeLayout
-          Size="186.666666666667,42.6666666666667"
-          Id="Package\Tareas SQL\Crear fila Sin Territorio"
-          TopLeft="31.1423597728523,188.622217490409" />
-        <NodeLayout
-          Size="208,42.6666666666667"
-          Id="Package\Tareas SQL\Script Reinicio Dimensiones"
-          TopLeft="13.5624999767169,28" />
+          Size="143,42"
+          Id="Package\Contenedor Dimensiones\DT_FechaEnv"
+          TopLeft="230,327" />
         <EdgeLayout
-          Id="Package\Tareas SQL.PrecedenceConstraints[Constraint]"
-          TopLeft="103.736109893148,155.311107582914">
+          Id="Package\Contenedor Dimensiones.PrecedenceConstraints[Constraint 4]"
+          TopLeft="299,297">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="20.7395832130375,33.3111099074951"
+              EndConnector="0,30"
               Start="0,0"
-              End="20.7395832130375,25.8111099074951">
+              End="0,22.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.6555549537475" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.6555549537475"
-                    Point2="0,16.6555549537475"
-                    Point3="4,16.6555549537475" />
+                    End="0,22.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="437,458"
+          Size="437,501"
+          Id="Package\Contenedor Dimensiones"
+          TopLeft="418.156250221189,199" />
+        <NodeLayout
+          Size="161,43"
+          Id="Package\Tareas SQL\Crear fila Sin País"
+          TopLeft="40.0694432264815,112.644440916247" />
+        <NodeLayout
+          Size="187,43"
+          Id="Package\Tareas SQL\Crear fila Sin Territorio"
+          TopLeft="31.1423597728523,188.622217490409" />
+        <NodeLayout
+          Size="208,43"
+          Id="Package\Tareas SQL\Script Reinicio Dimensiones"
+          TopLeft="13.5624999767169,28" />
+        <EdgeLayout
+          Id="Package\Tareas SQL.PrecedenceConstraints[Constraint]"
+          TopLeft="122.605901499667,155.644440916247">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32.977776574162"
+              Start="0,0"
+              End="0,25.477776574162">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="16.7395832130375,16.6555549537475" />
-                  <mssgle:CubicBezierSegment
-                    Point1="16.7395832130375,16.6555549537475"
-                    Point2="20.7395832130375,16.6555549537475"
-                    Point3="20.7395832130375,20.6555549537475" />
-                  <mssgle:LineSegment
-                    End="20.7395832130375,25.8111099074951" />
+                    End="0,25.477776574162" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2850,30 +4013,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Tareas SQL.PrecedenceConstraints[Constraint 1]"
-          TopLeft="117.562499976717,70.6666666666667">
+          TopLeft="119.065971601599,71">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-13.8263900835688,41.9777742495802"
+              EndConnector="0,41.644440916247"
               Start="0,0"
-              End="-13.8263900835688,34.4777742495802">
+              End="0,34.144440916247">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.9888871247901" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.9888871247901"
-                    Point2="0,20.9888871247901"
-                    Point3="-4,20.9888871247901" />
-                  <mssgle:LineSegment
-                    End="-9.82639008356878,20.9888871247901" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-9.82639008356878,20.9888871247901"
-                    Point2="-13.8263900835688,20.9888871247901"
-                    Point3="-13.8263900835688,24.9888871247901" />
-                  <mssgle:LineSegment
-                    End="-13.8263900835688,34.4777742495802" />
+                    End="0,34.144440916247" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2885,36 +4036,24 @@
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="256.666666666667,286"
-          Size="256.666666666667,329.333333333334"
+          PanelSize="257,286"
+          Size="257,329"
           Id="Package\Tareas SQL"
-          TopLeft="58.2187500116415,268.000000232458" />
+          TopLeft="58.2187500116415,288.000000232458" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="314.885416678308,432.666666899125">
+          TopLeft="315.218750011642,451.000000116229">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="103.270833542881,-24.000000232458"
+              EndConnector="102.937500209547,0"
               Start="0,0"
-              End="95.7708335428808,-24.000000232458">
+              End="95.4375002095475,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="47.6354167714404,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="47.6354167714404,0"
-                    Point2="51.6354167714404,0"
-                    Point3="51.6354167714404,-4" />
-                  <mssgle:LineSegment
-                    End="51.6354167714404,-20.000000232458" />
-                  <mssgle:CubicBezierSegment
-                    Point1="51.6354167714404,-20.000000232458"
-                    Point2="51.6354167714404,-24.000000232458"
-                    Point3="55.6354167714404,-24.000000232458" />
-                  <mssgle:LineSegment
-                    End="95.7708335428808,-24.000000232458" />
+                    End="95.4375002095475,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3104,15 +4243,15 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="145.333333333334,42.6666666666667"
+          Size="145,43"
           Id="Package\Contenedor Dimensiones\DT_Empleado\DT_Empleado"
           TopLeft="116.428571428571,286.428571428571" />
         <NodeLayout
-          Size="125.333333333334,42.6666666666667"
+          Size="125,43"
           Id="Package\Contenedor Dimensiones\DT_Empleado\Empleado"
           TopLeft="130,91" />
         <NodeLayout
-          Size="154.666666666667,42.6666666666667"
+          Size="155,43"
           Id="Package\Contenedor Dimensiones\DT_Empleado\Derived Column"
           TopLeft="123.571428571429,187.142857142857" />
         <EdgeLayout
@@ -3284,11 +4423,11 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="109.333333333334,42.6666666666667"
+          Size="109,43"
           Id="Package\Contenedor Dimensiones\DT_Pais_Empleado\Paises"
           TopLeft="125,53" />
         <NodeLayout
-          Size="169.333333333334,42.6666666666667"
+          Size="169,43"
           Id="Package\Contenedor Dimensiones\DT_Pais_Empleado\DT_Pais_Empleado"
           TopLeft="93.3333333333333,152.5" />
         <EdgeLayout
@@ -3426,11 +4565,11 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="122.666666666667,42.6666666666667"
+          Size="123,43"
           Id="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio"
           TopLeft="177,119" />
         <NodeLayout
-          Size="194.666666666667,42.6666666666667"
+          Size="195,43"
           Id="Package\Contenedor Dimensiones\DT_Territorio_Empleado\DT_Territorio_Empleado"
           TopLeft="138,271" />
         <EdgeLayout
@@ -3473,6 +4612,250 @@
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Contenedor Dimensiones\DT_Territorio_Empleado\Territorio">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Contenedor Dimensiones\DT_FechaCom">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha"
+          TopLeft="194,141" />
+        <NodeLayout
+          Size="153,42"
+          Id="Package\Contenedor Dimensiones\DT_FechaCom\Dia, Mes, Annio"
+          TopLeft="182,277" />
+        <EdgeLayout
+          Id="Package\Contenedor Dimensiones\DT_FechaCom.Paths[Excel Source Output]"
+          TopLeft="259.75,183">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,94"
+              Start="0,0"
+              End="0,86.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,86.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="144,42"
+          Id="Package\Contenedor Dimensiones\DT_FechaCom\FechaComFull"
+          TopLeft="180,375" />
+        <EdgeLayout
+          Id="Package\Contenedor Dimensiones\DT_FechaCom.Paths[Derived Column Output]"
+          TopLeft="255.25,319">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,56"
+              Start="0,0"
+              End="0,48.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,48.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="147,42"
+          Id="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom"
+          TopLeft="169,502" />
+        <EdgeLayout
+          Id="Package\Contenedor Dimensiones\DT_FechaCom.Paths[Derived Column Output1]"
+          TopLeft="252,417">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-9.5,85"
+              Start="0,0"
+              End="-9.5,77.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,38.5"
+                    Point2="0,42.5"
+                    Point3="-4,42.5" />
+                  <mssgle:LineSegment
+                    End="-5.5,42.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-5.5,42.5"
+                    Point2="-9.5,42.5"
+                    Point3="-9.5,46.5" />
+                  <mssgle:LineSegment
+                    End="-9.5,77.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Dimensiones\DT_FechaCom\DT_FechaCom">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Contenedor Dimensiones\DT_FechaEnv">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv"
+          TopLeft="144,130" />
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Contenedor Dimensiones\DT_FechaEnv\dia, mes, annio"
+          TopLeft="148,248" />
+        <EdgeLayout
+          Id="Package\Contenedor Dimensiones\DT_FechaEnv.Paths[Excel Source Output]"
+          TopLeft="221.5,172">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,76"
+              Start="0,0"
+              End="0,68.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,68.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="233,42"
+          Id="Package\Contenedor Dimensiones\DT_FechaEnv\semana, semestre, FechaEnvFull"
+          TopLeft="109,360" />
+        <EdgeLayout
+          Id="Package\Contenedor Dimensiones\DT_FechaEnv.Paths[Derived Column Output]"
+          TopLeft="224.5,290">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70"
+              Start="0,0"
+              End="0,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="143,42"
+          Id="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv"
+          TopLeft="155,467" />
+        <EdgeLayout
+          Id="Package\Contenedor Dimensiones\DT_FechaEnv.Paths[Derived Column Output1]"
+          TopLeft="226,402">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,65"
+              Start="0,0"
+              End="0,57.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,57.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Dimensiones\DT_FechaEnv\DT_FechaEnv">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
