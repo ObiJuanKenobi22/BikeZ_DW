@@ -5,22 +5,22 @@
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="EC2AMAZ-S4OAO10"
   DTS:CreatorName="EC2AMAZ-S4OAO10\Administrator"
-  DTS:DTSID="{BC437A55-D628-4CBF-A222-6F2DA9F0A758}"
+  DTS:DTSID="{90D13AFD-E53D-4E7E-A732-FCA9BB2F8D94}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="16.0.5467.0"
   DTS:LocaleID="1033"
-  DTS:ObjectName="Package"
+  DTS:ObjectName="Sol_BikeZ"
   DTS:PackageType="5"
-  DTS:VersionBuild="61"
-  DTS:VersionGUID="{DF5EB5D2-7B89-4E43-9470-08DF3E709172}">
+  DTS:VersionBuild="70"
+  DTS:VersionGUID="{8A0028C9-6353-4456-98FD-37686DC27325}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:refId="Package.ConnectionManagers[FechaCom]"
       DTS:CreationName="EXCEL"
       DTS:DTSID="{0051239B-0B7C-4E56-AB27-0BC8DEFB55BE}"
-      DTS:ObjectName="Excel Connection Manager">
+      DTS:ObjectName="FechaCom">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="0"
@@ -29,10 +29,10 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:refId="Package.ConnectionManagers[FechaEnv]"
       DTS:CreationName="EXCEL"
       DTS:DTSID="{0660A30F-B21B-49A1-807C-0A88EEA08B5F}"
-      DTS:ObjectName="Excel Connection Manager 1">
+      DTS:ObjectName="FechaEnv">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="0"
@@ -62,6 +62,18 @@
           DTS:ConnectRetryCount="1"
           DTS:ConnectRetryInterval="5"
           DTS:ConnectionString="Data Source=.;Initial Catalog=BikeZ_DW;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{AEC3CC63-0999-4C6D-9450-1F16735F3676}LocalHost.BikeZ_DW;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[NovedadesDT_Empleado]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{59FFA298-4F33-48BB-9399-9AC010B4E0C1}"
+      DTS:ObjectName="NovedadesDT_Empleado">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="0"
+          DTS:ConnectRetryInterval="0"
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Bases\Empleados_Modificado_xlwt.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -3420,8 +3432,8 @@
                   <connections>
                     <connection
                       refId="Package\Contenedor Dimensiones\DT_FechaCom\Excel Fecha.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
-                      connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                      connectionManagerID="Package.ConnectionManagers[FechaCom]"
+                      connectionManagerRefId="Package.ConnectionManagers[FechaCom]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -3930,8 +3942,8 @@
                   <connections>
                     <connection
                       refId="Package\Contenedor Dimensiones\DT_FechaEnv\Excel FechaEnv.Connections[OleDbConnection]"
-                      connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
-                      connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
+                      connectionManagerID="Package.ConnectionManagers[FechaEnv]"
+                      connectionManagerRefId="Package.ConnectionManagers[FechaEnv]"
                       description="The OLE DB runtime connection used to access the database."
                       name="OleDbConnection" />
                   </connections>
@@ -7390,6 +7402,1916 @@
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Contenedor Novedades"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{599437CB-C905-4614-8867-508427ECA42E}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Contenedor Novedades">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor Novedades\Carga DT_Empleados"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{902C25D1-D463-4E5F-8904-F4831D9FE2D9}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Carga DT_Empleados"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="Conditional Split"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input].Columns[EmpleadoID]"
+                          cachedDataType="i4"
+                          cachedName="EmpleadoID"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[EmpleadoID]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input].Columns[Cargo]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Cargo"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[Cargo]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input].Columns[FechaNacimiento]"
+                          cachedDataType="dbDate"
+                          cachedName="FechaNacimiento"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[FechaNacimiento]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input].Columns[EstadoCivil]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="EstadoCivil"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[EstadoCivil]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input].Columns[Genero]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="Genero"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[Genero]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input].Columns[FechaContratacion]"
+                          cachedDataType="dbDate"
+                          cachedName="FechaContratacion"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[FechaContratacion]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input].Columns[HorasVacaciones]"
+                          cachedDataType="i2"
+                          cachedName="HorasVacaciones"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[HorasVacaciones]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input].Columns[TerritorioID]"
+                          cachedDataType="i4"
+                          cachedName="TerritorioID"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[TerritorioID]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input].Columns[EmpleadoID1]"
+                          cachedDataType="i4"
+                          cachedName="EmpleadoID"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[EmpleadoID]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input].Columns[Cargo1]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Cargo"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[Cargo]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input].Columns[FechaNacimiento1]"
+                          cachedDataType="dbDate"
+                          cachedName="FechaNacimiento"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[FechaNacimiento]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input].Columns[EstadoCivil1]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="EstadoCivil"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[EstadoCivil]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input].Columns[Genero1]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="Genero"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[Genero]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input].Columns[FechaContratacion1]"
+                          cachedDataType="dbDate"
+                          cachedName="FechaContratacion"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[FechaContratacion]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input].Columns[HorasVacaciones1]"
+                          cachedDataType="i2"
+                          cachedName="HorasVacaciones"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[HorasVacaciones]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input].Columns[TerritorioID1]"
+                          cachedDataType="i4"
+                          cachedName="TerritorioID"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[TerritorioID]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Outputs[Insertar]"
+                      description="Output 1 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Insertar"
+                      synchronousInputId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">[ISNULL](#{Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[EmpleadoID]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(Lookup.EmpleadoID)</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Outputs[Actualizar]"
+                      description="Output 2 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Actualizar"
+                      synchronousInputId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">#{Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[EmpleadoID]} != #{Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[EmpleadoID]} || #{Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[Cargo]} != #{Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[Cargo]} || #{Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[FechaNacimiento]} != #{Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[FechaNacimiento]} || #{Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[EstadoCivil]} != #{Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[EstadoCivil]} || #{Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[Genero]} != #{Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[Genero]} || #{Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[FechaContratacion]} != #{Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[FechaContratacion]} || #{Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[HorasVacaciones]} != #{Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[HorasVacaciones]} || #{Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[TerritorioID]} != #{Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[TerritorioID]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">Empleados_paso.EmpleadoID != Lookup.EmpleadoID || Empleados_paso.Cargo != Lookup.Cargo || Empleados_paso.FechaNacimiento != Lookup.FechaNacimiento || Empleados_paso.EstadoCivil != Lookup.EstadoCivil || Empleados_paso.Genero != Lookup.Genero || Empleados_paso.FechaContratacion != Lookup.FechaContratacion || Empleados_paso.HorasVacaciones != Lookup.HorasVacaciones || Empleados_paso.TerritorioID != Lookup.TerritorioID</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">1</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Outputs[Conditional Split Default Output]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Conditional Split Default Output"
+                      synchronousInputId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="DT_Empleados"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[DT_Empleado]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].Columns[EmpleadoID]"
+                          cachedDataType="i4"
+                          cachedName="EmpleadoID"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].ExternalColumns[EmpleadoID]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[EmpleadoID]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].Columns[Cargo]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Cargo"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[Cargo]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].Columns[FechaNacimiento]"
+                          cachedDataType="dbDate"
+                          cachedName="FechaNacimiento"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].ExternalColumns[FechaNacimiento]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[FechaNacimiento]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].Columns[EstadoCivil]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="EstadoCivil"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].ExternalColumns[EstadoCivil]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[EstadoCivil]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].Columns[Genero]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="Genero"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].ExternalColumns[Genero]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[Genero]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].Columns[FechaContratacion]"
+                          cachedDataType="dbDate"
+                          cachedName="FechaContratacion"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].ExternalColumns[FechaContratacion]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[FechaContratacion]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].Columns[HorasVacaciones]"
+                          cachedDataType="i2"
+                          cachedName="HorasVacaciones"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].ExternalColumns[HorasVacaciones]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[HorasVacaciones]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].Columns[TerritorioID]"
+                          cachedDataType="i4"
+                          cachedName="TerritorioID"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].ExternalColumns[TerritorioID]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[TerritorioID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].ExternalColumns[EmpleadoID]"
+                          dataType="i4"
+                          name="EmpleadoID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                          dataType="wstr"
+                          length="50"
+                          name="Cargo" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].ExternalColumns[FechaNacimiento]"
+                          dataType="dbDate"
+                          name="FechaNacimiento" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].ExternalColumns[EstadoCivil]"
+                          dataType="wstr"
+                          length="1"
+                          name="EstadoCivil" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].ExternalColumns[Genero]"
+                          dataType="wstr"
+                          length="1"
+                          name="Genero" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].ExternalColumns[FechaContratacion]"
+                          dataType="dbDate"
+                          name="FechaContratacion" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].ExternalColumns[HorasVacaciones]"
+                          dataType="i2"
+                          name="HorasVacaciones" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input].ExternalColumns[TerritorioID]"
+                          dataType="i4"
+                          name="TerritorioID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Empleados_paso"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Empleado_Paso]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[EmpleadoID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].ExternalColumns[EmpleadoID]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[EmpleadoID]"
+                          name="EmpleadoID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[Cargo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].ExternalColumns[Cargo]"
+                          length="50"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[Cargo]"
+                          name="Cargo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[FechaNacimiento]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].ExternalColumns[FechaNacimiento]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[FechaNacimiento]"
+                          name="FechaNacimiento"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[EstadoCivil]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].ExternalColumns[EstadoCivil]"
+                          length="1"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[EstadoCivil]"
+                          name="EstadoCivil"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[Genero]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].ExternalColumns[Genero]"
+                          length="1"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[Genero]"
+                          name="Genero"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[FechaContratacion]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].ExternalColumns[FechaContratacion]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[FechaContratacion]"
+                          name="FechaContratacion"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[HorasVacaciones]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].ExternalColumns[HorasVacaciones]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[HorasVacaciones]"
+                          name="HorasVacaciones"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[TerritorioID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].ExternalColumns[TerritorioID]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[TerritorioID]"
+                          name="TerritorioID"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].ExternalColumns[EmpleadoID]"
+                          dataType="i4"
+                          name="EmpleadoID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].ExternalColumns[Cargo]"
+                          dataType="wstr"
+                          length="50"
+                          name="Cargo" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].ExternalColumns[FechaNacimiento]"
+                          dataType="dbDate"
+                          name="FechaNacimiento" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].ExternalColumns[EstadoCivil]"
+                          dataType="wstr"
+                          length="1"
+                          name="EstadoCivil" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].ExternalColumns[Genero]"
+                          dataType="wstr"
+                          length="1"
+                          name="Genero" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].ExternalColumns[FechaContratacion]"
+                          dataType="dbDate"
+                          name="FechaContratacion" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].ExternalColumns[HorasVacaciones]"
+                          dataType="i2"
+                          name="HorasVacaciones" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].ExternalColumns[TerritorioID]"
+                          dataType="i4"
+                          name="TerritorioID" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[EmpleadoID]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[EmpleadoID]"
+                          name="EmpleadoID" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[Cargo]"
+                          dataType="wstr"
+                          length="50"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[Cargo]"
+                          name="Cargo" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[FechaNacimiento]"
+                          dataType="dbDate"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[FechaNacimiento]"
+                          name="FechaNacimiento" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[EstadoCivil]"
+                          dataType="wstr"
+                          length="1"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[EstadoCivil]"
+                          name="EstadoCivil" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[Genero]"
+                          dataType="wstr"
+                          length="1"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[Genero]"
+                          name="Genero" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[FechaContratacion]"
+                          dataType="dbDate"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[FechaContratacion]"
+                          name="FechaContratacion" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[HorasVacaciones]"
+                          dataType="i2"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[HorasVacaciones]"
+                          name="HorasVacaciones" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[TerritorioID]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[TerritorioID]"
+                          name="TerritorioID" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup"
+                  componentClassID="Microsoft.Lookup"
+                  contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+                  description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+                  name="Lookup"
+                  usesDispositions="true"
+                  version="6">
+                  <properties>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the SQL statement that generates the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dbo].[DT_Empleado]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                      expressionType="Notify"
+                      name="SqlCommandParam"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dbo].[DT_Empleado]) [refTable]
+where [refTable].[EmpleadoID] = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the type of connection used to access the reference dataset."
+                      name="ConnectionType"
+                      typeConverter="LookupConnectionType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the cache type of the lookup table."
+                      name="CacheType"
+                      typeConverter="CacheType">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                      name="NoMatchBehavior"
+                      typeConverter="LookupNoMatchBehavior">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                      name="NoMatchCachePercentage">0</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                      name="MaxMemoryUsage">25</property>
+                    <property
+                      dataType="System.Int64"
+                      description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                      name="MaxMemoryUsage64">25</property>
+                    <property
+                      dataType="System.String"
+                      description="Indicates whether to reference metadata in an XML format."
+                      name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="EmpleadoID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Cargo" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FechaNacimiento" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="EstadoCivil" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Genero" dataType="DT_WSTR" length="1" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="FechaContratacion" dataType="DT_DBDATE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="HorasVacaciones" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TerritorioID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                      name="ParameterMap">#{Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[EmpleadoID]};</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                      name="TreatDuplicateKeysAsError">false</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      description="Connection manager used to access lookup data."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Inputs[Lookup Input]"
+                      name="Lookup Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Inputs[Lookup Input].Columns[EmpleadoID]"
+                          cachedDataType="i4"
+                          cachedName="EmpleadoID"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[EmpleadoID]">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table that a column joins."
+                              name="JoinToReferenceColumn">EmpleadoID</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn" />
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output]"
+                      errorOrTruncationOperation="Lookup"
+                      errorRowDisposition="IgnoreFailure"
+                      exclusionGroup="1"
+                      name="Lookup Match Output"
+                      synchronousInputId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[EmpleadoID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[EmpleadoID]"
+                          name="EmpleadoID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">EmpleadoID</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[Cargo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Copy Column"
+                          length="50"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[Cargo]"
+                          name="Cargo"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Cargo</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[FechaNacimiento]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[FechaNacimiento]"
+                          name="FechaNacimiento"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">FechaNacimiento</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[EstadoCivil]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Copy Column"
+                          length="1"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[EstadoCivil]"
+                          name="EstadoCivil"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">EstadoCivil</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[Genero]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Copy Column"
+                          length="1"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[Genero]"
+                          name="Genero"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">Genero</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[FechaContratacion]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[FechaContratacion]"
+                          name="FechaContratacion"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">FechaContratacion</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[HorasVacaciones]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[HorasVacaciones]"
+                          name="HorasVacaciones"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">HorasVacaciones</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[TerritorioID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Copy Column"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output].Columns[TerritorioID]"
+                          name="TerritorioID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the column in the reference table from which a column is copied."
+                              name="CopyFromReferenceColumn">TerritorioID</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup No Match Output]"
+                      description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                      exclusionGroup="1"
+                      name="Lookup No Match Output"
+                      synchronousInputId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Inputs[Lookup Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Lookup Error Output"
+                      synchronousInputId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Inputs[Lookup Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado"
+                  componentClassID="Microsoft.OLEDBCommand"
+                  contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+                  description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+                  name="Update DT_Empelado"
+                  usesDispositions="true"
+                  version="2">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      expressionType="Notify"
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE [dbo].[DT_Empleado]
+   SET [Cargo] = ?
+      ,[FechaNacimiento] = ?
+      ,[EstadoCivil] = ?
+      ,[Genero] = ?
+      ,[FechaContratacion] = ?
+      ,[HorasVacaciones] = ?
+      ,[TerritorioID] = ?
+ WHERE EmpleadoID = ?</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input]"
+                      errorOrTruncationOperation="Command Execution"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Command Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].Columns[Cargo]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Cargo"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[Cargo]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].Columns[FechaNacimiento]"
+                          cachedDataType="dbDate"
+                          cachedName="FechaNacimiento"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[FechaNacimiento]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].Columns[EstadoCivil]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="EstadoCivil"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[EstadoCivil]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].Columns[Genero]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="Genero"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[Genero]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].Columns[FechaContratacion]"
+                          cachedDataType="dbDate"
+                          cachedName="FechaContratacion"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[FechaContratacion]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].Columns[HorasVacaciones]"
+                          cachedDataType="i2"
+                          cachedName="HorasVacaciones"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[HorasVacaciones]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].Columns[TerritorioID]"
+                          cachedDataType="i4"
+                          cachedName="TerritorioID"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[TerritorioID]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].Columns[EmpleadoID]"
+                          cachedDataType="i4"
+                          cachedName="EmpleadoID"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output].Columns[EmpleadoID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                          dataType="wstr"
+                          length="50"
+                          name="Param_0">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].ExternalColumns[Param_1]"
+                          dataType="dbDate"
+                          name="Param_1">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].ExternalColumns[Param_2]"
+                          dataType="wstr"
+                          length="1"
+                          name="Param_2">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].ExternalColumns[Param_3]"
+                          dataType="wstr"
+                          length="1"
+                          name="Param_3">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].ExternalColumns[Param_4]"
+                          dataType="dbDate"
+                          name="Param_4">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].ExternalColumns[Param_5]"
+                          dataType="i2"
+                          name="Param_5">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">65</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].ExternalColumns[Param_6]"
+                          dataType="i4"
+                          name="Param_6">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input].ExternalColumns[Param_7]"
+                          dataType="i4"
+                          name="Param_7">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                              name="DBParamInfoFlags">81</property>
+                          </properties>
+                        </externalMetadataColumn>
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Outputs[OLE DB Command Output]"
+                      exclusionGroup="1"
+                      name="OLE DB Command Output"
+                      synchronousInputId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input]">
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Outputs[OLE DB Command Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Command Error Output"
+                      synchronousInputId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contenedor Novedades\Carga DT_Empleados.Paths[Actualizar]"
+                  endId="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado.Inputs[OLE DB Command Input]"
+                  name="Actualizar"
+                  startId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Outputs[Actualizar]" />
+                <path
+                  refId="Package\Contenedor Novedades\Carga DT_Empleados.Paths[Insertar]"
+                  endId="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados.Inputs[OLE DB Destination Input]"
+                  name="Insertar"
+                  startId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Outputs[Insertar]" />
+                <path
+                  refId="Package\Contenedor Novedades\Carga DT_Empleados.Paths[Lookup Match Output]"
+                  endId="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split.Inputs[Conditional Split Input]"
+                  name="Lookup Match Output"
+                  startId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Outputs[Lookup Match Output]" />
+                <path
+                  refId="Package\Contenedor Novedades\Carga DT_Empleados.Paths[OLE DB Source Output]"
+                  endId="Package\Contenedor Novedades\Carga DT_Empleados\Lookup.Inputs[Lookup Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso.Outputs[OLE DB Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor Novedades\Excel NovEmpleados"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{F98BA348-6FFB-41E1-AC58-46DE2474D3F8}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Excel NovEmpleados"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion"
+                  componentClassID="Microsoft.DataConvert"
+                  contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Data Conversion"
+                  name="Data Conversion"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Inputs[Data Conversion Input]"
+                      name="Data Conversion Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Inputs[Data Conversion Input].Columns[EmpleadoID]"
+                          cachedDataType="r8"
+                          cachedName="EmpleadoID"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[EmpleadoID]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Inputs[Data Conversion Input].Columns[FechaNacimiento]"
+                          cachedDataType="date"
+                          cachedName="FechaNacimiento"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[FechaNacimiento]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Inputs[Data Conversion Input].Columns[Cargo]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Cargo"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[Cargo]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Inputs[Data Conversion Input].Columns[EstadoCivil]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="EstadoCivil"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[EstadoCivil]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Inputs[Data Conversion Input].Columns[Genero]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Genero"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[Genero]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Inputs[Data Conversion Input].Columns[FechaContratacion]"
+                          cachedDataType="date"
+                          cachedName="FechaContratacion"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[FechaContratacion]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Inputs[Data Conversion Input].Columns[HorasVacaciones]"
+                          cachedDataType="r8"
+                          cachedName="HorasVacaciones"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[HorasVacaciones]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Inputs[Data Conversion Input].Columns[TerritorioID]"
+                          cachedDataType="r8"
+                          cachedName="TerritorioID"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[TerritorioID]" />
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output]"
+                      exclusionGroup="1"
+                      name="Data Conversion Output"
+                      synchronousInputId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[EmpleadoID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[EmpleadoID]"
+                          name="EmpleadoID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[EmpleadoID]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[Cargo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="50"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[Cargo]"
+                          name="Cargo"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[Cargo]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[FechaNacimiento]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[FechaNacimiento]"
+                          name="FechaNacimiento"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[FechaNacimiento]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[EstadoCivil]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="1"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[EstadoCivil]"
+                          name="EstadoCivil"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[EstadoCivil]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[Genero]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          length="1"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[Genero]"
+                          name="Genero"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[Genero]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[FechaContratacion]"
+                          dataType="dbDate"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[FechaContratacion]"
+                          name="FechaContratacion"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[FechaContratacion]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[HorasVacaciones]"
+                          dataType="i2"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[HorasVacaciones]"
+                          name="HorasVacaciones"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[HorasVacaciones]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[TerritorioID]"
+                          dataType="i4"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[TerritorioID]"
+                          name="TerritorioID"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the input column used as the source of data for the conversion."
+                              name="SourceInputColumnLineageID">#{Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[TerritorioID]}</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Data Conversion Error Output"
+                      synchronousInputId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Inputs[Data Conversion Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="NovedadesEmP"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">Nov_DT_Empleados$</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[NovedadesDT_Empleado]"
+                      connectionManagerRefId="Package.ConnectionManagers[NovedadesDT_Empleado]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[EmpleadoID]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].ExternalColumns[EmpleadoID]"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[EmpleadoID]"
+                          name="EmpleadoID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[Cargo]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].ExternalColumns[Cargo]"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[Cargo]"
+                          name="Cargo"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[FechaNacimiento]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].ExternalColumns[FechaNacimiento]"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[FechaNacimiento]"
+                          name="FechaNacimiento"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[EstadoCivil]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].ExternalColumns[EstadoCivil]"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[EstadoCivil]"
+                          name="EstadoCivil"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[Genero]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].ExternalColumns[Genero]"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[Genero]"
+                          name="Genero"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[FechaContratacion]"
+                          dataType="date"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].ExternalColumns[FechaContratacion]"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[FechaContratacion]"
+                          name="FechaContratacion"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[HorasVacaciones]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].ExternalColumns[HorasVacaciones]"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[HorasVacaciones]"
+                          name="HorasVacaciones"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[TerritorioID]"
+                          dataType="r8"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].ExternalColumns[TerritorioID]"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].Columns[TerritorioID]"
+                          name="TerritorioID"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].ExternalColumns[EmpleadoID]"
+                          dataType="r8"
+                          name="EmpleadoID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].ExternalColumns[Cargo]"
+                          dataType="wstr"
+                          length="255"
+                          name="Cargo" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].ExternalColumns[FechaNacimiento]"
+                          dataType="date"
+                          name="FechaNacimiento" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].ExternalColumns[EstadoCivil]"
+                          dataType="wstr"
+                          length="255"
+                          name="EstadoCivil" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].ExternalColumns[Genero]"
+                          dataType="wstr"
+                          length="255"
+                          name="Genero" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].ExternalColumns[FechaContratacion]"
+                          dataType="date"
+                          name="FechaContratacion" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].ExternalColumns[HorasVacaciones]"
+                          dataType="r8"
+                          name="HorasVacaciones" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output].ExternalColumns[TerritorioID]"
+                          dataType="r8"
+                          name="TerritorioID" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[EmpleadoID]"
+                          dataType="r8"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[EmpleadoID]"
+                          name="EmpleadoID" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[Cargo]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[Cargo]"
+                          name="Cargo" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[FechaNacimiento]"
+                          dataType="date"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[FechaNacimiento]"
+                          name="FechaNacimiento" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[EstadoCivil]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[EstadoCivil]"
+                          name="EstadoCivil" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[Genero]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[Genero]"
+                          name="Genero" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[FechaContratacion]"
+                          dataType="date"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[FechaContratacion]"
+                          name="FechaContratacion" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[HorasVacaciones]"
+                          dataType="r8"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[HorasVacaciones]"
+                          name="HorasVacaciones" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[TerritorioID]"
+                          dataType="r8"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[TerritorioID]"
+                          name="TerritorioID" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[Empleado_Paso]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">true</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.BikeZ_DW]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EmpleadoID]"
+                          cachedDataType="i4"
+                          cachedName="EmpleadoID"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmpleadoID]"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[EmpleadoID]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Cargo]"
+                          cachedDataType="wstr"
+                          cachedLength="50"
+                          cachedName="Cargo"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[Cargo]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FechaNacimiento]"
+                          cachedDataType="dbDate"
+                          cachedName="FechaNacimiento"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaNacimiento]"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[FechaNacimiento]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[EstadoCivil]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="EstadoCivil"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EstadoCivil]"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[EstadoCivil]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Genero]"
+                          cachedDataType="wstr"
+                          cachedLength="1"
+                          cachedName="Genero"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Genero]"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[Genero]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FechaContratacion]"
+                          cachedDataType="dbDate"
+                          cachedName="FechaContratacion"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaContratacion]"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[FechaContratacion]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[HorasVacaciones]"
+                          cachedDataType="i2"
+                          cachedName="HorasVacaciones"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HorasVacaciones]"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[HorasVacaciones]" />
+                        <inputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[TerritorioID]"
+                          cachedDataType="i4"
+                          cachedName="TerritorioID"
+                          externalMetadataColumnId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TerritorioID]"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output].Columns[TerritorioID]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EmpleadoID]"
+                          dataType="i4"
+                          name="EmpleadoID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Cargo]"
+                          dataType="wstr"
+                          length="50"
+                          name="Cargo" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaNacimiento]"
+                          dataType="dbDate"
+                          name="FechaNacimiento" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[EstadoCivil]"
+                          dataType="wstr"
+                          length="1"
+                          name="EstadoCivil" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Genero]"
+                          dataType="wstr"
+                          length="1"
+                          name="Genero" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FechaContratacion]"
+                          dataType="dbDate"
+                          name="FechaContratacion" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[HorasVacaciones]"
+                          dataType="i2"
+                          name="HorasVacaciones" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[TerritorioID]"
+                          dataType="i4"
+                          name="TerritorioID" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contenedor Novedades\Excel NovEmpleados.Paths[Data Conversion Output]"
+                  endId="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Data Conversion Output"
+                  startId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Outputs[Data Conversion Output]" />
+                <path
+                  refId="Package\Contenedor Novedades\Excel NovEmpleados.Paths[Excel Source Output]"
+                  endId="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Excel Source Output"
+                  startId="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP.Outputs[Excel Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor Novedades\Reinicio tabla de paso"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{A5A28BFD-9AC1-4DAD-921F-7CC248554406}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Reinicio tabla de paso"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{AEC3CC63-0999-4C6D-9450-1F16735F3676}"
+              SQLTask:SqlStatementSource="DELETE FROM Empleado_Paso;&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Contenedor Novedades.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{443ED509-EAFC-4955-8A5A-71102EF02C57}"
+          DTS:From="Package\Contenedor Novedades\Reinicio tabla de paso"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Contenedor Novedades\Excel NovEmpleados" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Contenedor Novedades.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{BF8823D3-0A2E-4C67-8305-79EF6092A481}"
+          DTS:From="Package\Contenedor Novedades\Excel NovEmpleados"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Contenedor Novedades\Carga DT_Empleados" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\FACT TABLE"
       DTS:CreationName="STOCK:SEQUENCE"
       DTS:Description="Sequence Container"
@@ -9105,6 +11027,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 1"
       DTS:To="Package\FACT TABLE" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{0B82E4E5-D53B-465F-BD2D-EF903B6A1E6B}"
+      DTS:From="Package\FACT TABLE"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\Contenedor Novedades" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -9117,7 +11047,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="64" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="139,43"
           Id="Package\Contenedor Dimensiones\DT_Almacen"
@@ -9375,7 +11305,7 @@
           PanelSize="216,125"
           Size="216,168"
           Id="Package\FACT TABLE"
-          TopLeft="996,425" />
+          TopLeft="967,209" />
         <NodeLayout
           Size="208,43"
           Id="Package\Tareas SQL\Script Reinicio Dimensiones"
@@ -9423,18 +11353,115 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="855.156250221189,510.25">
+          TopLeft="855.156250221189,511.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="140.843749778811,0"
+              EndConnector="111.843749778811,-218.5"
               Start="0,0"
-              End="133.343749778811,0">
+              End="104.343749778811,-218.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="133.343749778811,0" />
+                    End="51.9218748894055,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="51.9218748894055,0"
+                    Point2="55.9218748894055,0"
+                    Point3="55.9218748894055,-4" />
+                  <mssgle:LineSegment
+                    End="55.9218748894055,-214.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="55.9218748894055,-214.5"
+                    Point2="55.9218748894055,-218.5"
+                    Point3="59.9218748894055,-218.5" />
+                  <mssgle:LineSegment
+                    End="104.343749778811,-218.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="182,42"
+          Id="Package\Contenedor Novedades\Reinicio tabla de paso"
+          TopLeft="34,16" />
+        <NodeLayout
+          Size="176,42"
+          Id="Package\Contenedor Novedades\Excel NovEmpleados"
+          TopLeft="44,100" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Contenedor Novedades\Carga DT_Empleados"
+          TopLeft="49,196" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades.PrecedenceConstraints[Constraint]"
+          TopLeft="128.5,58">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,42"
+              Start="0,0"
+              End="0,34.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Contenedor Novedades.PrecedenceConstraints[Constraint 1]"
+          TopLeft="135.5,142">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54"
+              Start="0,0"
+              End="0,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="257,293"
+          Size="257,336"
+          Id="Package\Contenedor Novedades"
+          TopLeft="952,487" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="1077.75,377">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,110"
+              Start="0,0"
+              End="0,102.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,102.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11010,131 +13037,39 @@
     design-time-name="Package\FACT TABLE\FT_Ventas">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="111,42"
-          Id="Package\FACT TABLE\FT_Ventas\Ventas"
-          TopLeft="157,105" />
+          Size="130,42"
+          Id="Package\FACT TABLE\FT_Ventas\Merge Join"
+          TopLeft="288,355" />
         <NodeLayout
-          Size="143,42"
-          Id="Package\FACT TABLE\FT_Ventas\DetalleVentas"
-          TopLeft="361,108" />
+          Size="154,42"
+          Id="Package\FACT TABLE\FT_Ventas\Derived Column"
+          TopLeft="142,183" />
         <NodeLayout
           Size="123,42"
           Id="Package\FACT TABLE\FT_Ventas\VentaID2"
           TopLeft="371,263" />
         <NodeLayout
-          Size="154,42"
-          Id="Package\FACT TABLE\FT_Ventas\Derived Column"
-          TopLeft="142,183" />
-        <EdgeLayout
-          Id="Package\FACT TABLE\FT_Ventas.Paths[OLE DB Source Output]"
-          TopLeft="432.5,150">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,113"
-              Start="0,0"
-              End="0,105.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,105.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\FACT TABLE\FT_Ventas.Paths[OLE DB Source Output1]"
-          TopLeft="215.75,147">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,36"
-              Start="0,0"
-              End="0,28.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="111,42"
+          Id="Package\FACT TABLE\FT_Ventas\Ventas"
+          TopLeft="157,105" />
         <NodeLayout
           Size="117,42"
           Id="Package\FACT TABLE\FT_Ventas\VentaID"
           TopLeft="167,262" />
-        <EdgeLayout
-          Id="Package\FACT TABLE\FT_Ventas.Paths[Derived Column Output]"
-          TopLeft="222.25,225">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,37"
-              Start="0,0"
-              End="0,29.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,29.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="130,42"
-          Id="Package\FACT TABLE\FT_Ventas\Merge Join"
-          TopLeft="288,355" />
-        <EdgeLayout
-          Id="Package\FACT TABLE\FT_Ventas.Paths[Sort Output]"
-          TopLeft="225.5,304">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="127.5,51"
-              Start="0,0"
-              End="127.5,43.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,21.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,21.5"
-                    Point2="0,25.5"
-                    Point3="4,25.5" />
-                  <mssgle:LineSegment
-                    End="123.5,25.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="123.5,25.5"
-                    Point2="127.5,25.5"
-                    Point3="127.5,29.5" />
-                  <mssgle:LineSegment
-                    End="127.5,43.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          Size="171,42"
+          Id="Package\FACT TABLE\FT_Ventas\OLE DB Destination"
+          TopLeft="271.818181818182,568.181818181818" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\FACT TABLE\FT_Ventas\Campos Calculados"
+          TopLeft="270.909090909091,450.909090909091" />
+        <NodeLayout
+          Size="143,42"
+          Id="Package\FACT TABLE\FT_Ventas\DetalleVentas"
+          TopLeft="361,108" />
         <EdgeLayout
           Id="Package\FACT TABLE\FT_Ventas.Paths[Sort Output1]"
           TopLeft="432.5,305">
@@ -11166,13 +13101,95 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="170,42"
-          Id="Package\FACT TABLE\FT_Ventas\Campos Calculados"
-          TopLeft="270.909090909091,450.909090909091" />
+        <EdgeLayout
+          Id="Package\FACT TABLE\FT_Ventas.Paths[Sort Output]"
+          TopLeft="225.5,304">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="127.5,51"
+              Start="0,0"
+              End="127.5,43.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.5"
+                    Point2="0,25.5"
+                    Point3="4,25.5" />
+                  <mssgle:LineSegment
+                    End="123.5,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="123.5,25.5"
+                    Point2="127.5,25.5"
+                    Point3="127.5,29.5" />
+                  <mssgle:LineSegment
+                    End="127.5,43.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FACT TABLE\FT_Ventas.Paths[OLE DB Source Output1]"
+          TopLeft="215.75,147">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,36"
+              Start="0,0"
+              End="0,28.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FACT TABLE\FT_Ventas.Paths[OLE DB Source Output]"
+          TopLeft="432.5,150">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,113"
+              Start="0,0"
+              End="0,105.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,105.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\FACT TABLE\FT_Ventas.Paths[Merge Join Output]"
           TopLeft="354.454545454545,397">
@@ -11192,13 +13209,11 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="171,42"
-          Id="Package\FACT TABLE\FT_Ventas\OLE DB Destination"
-          TopLeft="271.818181818182,568.181818181818" />
         <EdgeLayout
           Id="Package\FACT TABLE\FT_Ventas.Paths[Derived Column Output1]"
           TopLeft="356.613636363636,492.909090909091">
@@ -11218,7 +13233,33 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\FACT TABLE\FT_Ventas.Paths[Derived Column Output]"
+          TopLeft="222.25,225">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -11226,6 +13267,19 @@
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\FACT TABLE\FT_Ventas\Ventas">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\FACT TABLE\FT_Ventas\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -11250,8 +13304,280 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Contenedor Novedades\Excel NovEmpleados">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP"
+          TopLeft="530,118" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Contenedor Novedades\Excel NovEmpleados\Data Conversion"
+          TopLeft="529,270" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades\Excel NovEmpleados.Paths[Excel Source Output]"
+          TopLeft="606.25,160">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,110"
+              Start="0,0"
+              End="0,102.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,102.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination"
+          TopLeft="515,382" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades\Excel NovEmpleados.Paths[Data Conversion Output]"
+          TopLeft="603.75,312">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70"
+              Start="0,0"
+              End="0,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Contenedor Novedades\Carga DT_Empleados">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="158,42"
+          Id="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso"
+          TopLeft="225,116" />
+        <NodeLayout
+          Size="113,42"
+          Id="Package\Contenedor Novedades\Carga DT_Empleados\Lookup"
+          TopLeft="243,230" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades\Carga DT_Empleados.Paths[OLE DB Source Output]"
+          TopLeft="301.75,158">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72"
+              Start="0,0"
+              End="0,64.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Contenedor Novedades\Carga DT_Empleados\Conditional Split"
+          TopLeft="229,353" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades\Carga DT_Empleados.Paths[Lookup Match Output]"
+          TopLeft="303,272">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,81"
+              Start="0,0"
+              End="0,73.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,73.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,30.9453125,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados"
+          TopLeft="121,449" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades\Carga DT_Empleados.Paths[Insertar]"
+          TopLeft="306.5,395">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-111,54"
+              Start="0,0"
+              End="-111,46.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23"
+                    Point2="0,27"
+                    Point3="-4,27" />
+                  <mssgle:LineSegment
+                    End="-107,27" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-107,27"
+                    Point2="-111,27"
+                    Point3="-111,31" />
+                  <mssgle:LineSegment
+                    End="-111,46.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-73.66029296875,32,36.3205859375,9.421875"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="181,42"
+          Id="Package\Contenedor Novedades\Carga DT_Empleados\Update DT_Empelado"
+          TopLeft="386,455" />
+        <EdgeLayout
+          Id="Package\Contenedor Novedades\Carga DT_Empleados.Paths[Actualizar]"
+          TopLeft="331,395">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="145.5,60"
+              Start="0,0"
+              End="145.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.367816091954" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.367816091954"
+                    Point2="0,24.367816091954"
+                    Point3="4,24.367816091954" />
+                  <mssgle:LineSegment
+                    End="141.5,24.367816091954" />
+                  <mssgle:CubicBezierSegment
+                    Point1="141.5,24.367816091954"
+                    Point2="145.5,24.367816091954"
+                    Point3="145.5,28.367816091954" />
+                  <mssgle:LineSegment
+                    End="145.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="50.4232421875,29.367816091954,44.653515625,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\FACT TABLE\FT_Ventas\OLE DB Destination">
+    design-time-name="Package\Contenedor Novedades\Excel NovEmpleados\NovedadesEmP">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Novedades\Excel NovEmpleados\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Novedades\Carga DT_Empleados\Empleados_paso">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Novedades\Carga DT_Empleados\Lookup">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dbo].[DT_Empleado]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor Novedades\Carga DT_Empleados\DT_Empleados">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

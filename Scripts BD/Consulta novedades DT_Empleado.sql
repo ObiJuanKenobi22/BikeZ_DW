@@ -1,0 +1,10 @@
+SELECT TOP (1000) [EmpleadoID]
+      ,[Cargo]
+      ,[FechaNacimiento]
+      ,[EstadoCivil]
+      ,[Genero]
+      ,[FechaContratacion]
+      ,[HorasVacaciones]
+      ,[TerritorioID]
+  FROM [BikeZ_DW].[dbo].[DT_Empleado]
+  WHERE EmpleadoID in(174, 232, 269, 291, 292, 293, 294)
